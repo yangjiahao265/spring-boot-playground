@@ -30,6 +30,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_DB: postgres
       POSTGRES_HOSTNAME: postgresdb
+      TZ: "Asia/Shanghai"
       # HTTP_PROXY: ${HTTP_PROXY}
       # HTTPS_PROXY: ${HTTP_PROXY}
       # NO_PROXY: ${NO_PROXY}

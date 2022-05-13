@@ -21,7 +21,12 @@
 		"vscjava.vscode-java-pack",
 		"ms-azuretools.vscode-docker",
 		"k--kato.intellij-idea-keybindings",
-		"eamodio.gitlens"
+		"eamodio.gitlens",
+		"Pivotal.vscode-boot-dev-pack",
+		"redhat.vscode-xml",
+		"GabrielBB.vscode-lombok",
+		"ms-kubernetes-tools.vscode-kubernetes-tools",
+		"redhat.vscode-yaml"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.

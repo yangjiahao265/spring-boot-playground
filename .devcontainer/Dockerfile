@@ -56,3 +56,19 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install zsh-autosuggestions zsh-syntax-highlighting \
     && echo "source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh" >> /home/vscode/.zshrc \
     && echo "source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> /home/vscode/.zshrc
+
+RUN export DEBIAN_FRONTEND=noninteractive \
+    && apt-get -y install dnsutils proxychains4 vim
+
+RUN if [ "${HTTP_PROXY}" != "none" ]; then IP=$(echo ${HTTP_PROXY} | cut -d/ -f3 | cut -d: -f1) \
+    && PORT=$(echo ${HTTP_PROXY} | cut -d: -f3) \
+    && mkdir -p /home/vscode/.proxychains \
+    && echo "strict_chain\n\
+proxy_dns\n\
+remote_dns_subnet 224\n\
+tcp_read_time_out 15000\n\
+tcp_connect_time_out 8000\n\
+[ProxyList]\n\
+http ${IP} ${PORT}" > /home/vscode/.proxychains/proxychains.conf; fi
+
+RUN su vscode -c "umask 0002 && . /usr/local/sdkman/bin/sdkman-init.sh && sdk install java 11.0.12-open"
